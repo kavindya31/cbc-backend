@@ -103,6 +103,7 @@ import mongoose from 'mongoose';
 import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
 import jwt from 'jsonwebtoken';
+import orderRouter from './routes/orderRouter.js';
 const app = express();
 
 // Middleware to parse JSON
@@ -163,7 +164,7 @@ mongoose.connect("mongodb+srv://1234:1234@cluster0.ge3u3ef.mongodb.net/?retryWri
   
   app.use("/products",productRouter)
   app.use("/users",userRouter)
-
+  app.use("/orders",orderRouter)
 // ✅ Create Schema and Model
 /*const studentSchema = new mongoose.Schema({
   Name: String,
