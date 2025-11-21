@@ -40,6 +40,8 @@ export function saveUsers(req,res){
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export async function getUsers(req, res) {
   try {
@@ -107,10 +109,10 @@ export function loginUser(req,res){
               role : user.role,
               img : user.img
             },
-          "cbc-batch-fivr@#31")
+          process.env.JWT_KEY
 
 
-
+          )
 
 
           res.json({
