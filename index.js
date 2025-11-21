@@ -98,14 +98,16 @@ student.save().then(()=>{
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-
-
 import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
 import jwt from 'jsonwebtoken';
 import orderRouter from './routes/orderRouter.js';
+import cors from "cors";
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
 
+app.use(cors())
 // Middleware to parse JSON
 app.use(bodyParser.json())
 /*app.use(
@@ -153,7 +155,7 @@ app.use((req, res, next) => {
 
 
 // ✅ Connect to MongoDB
-mongoose.connect("mongodb+srv://1234:1234@cluster0.ge3u3ef.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(process.env.MONGODB_URL)
   .then(() => {
     console.log("✅ Connected to the database");
   })
